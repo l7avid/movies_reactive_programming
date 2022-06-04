@@ -31,7 +31,7 @@ public class PostMovieUseCase {
                 .switchIfEmpty(Mono.error(() -> new Exception("Missing attributes")));
     }
 
-    public Mono<MovieDTO> postMovieDTO(MovieDTO movieDTO){
+    public Mono<MovieDTO> postMovie(MovieDTO movieDTO){
         return validateMovieDTO(movieDTO)
                 .flatMap(movieDTO1 -> repository.save(mapper.toMovie(movieDTO1)))
                 //.map(movie -> mapper.toMovieDTO(movie)); same as below but using arrow function
